@@ -21,7 +21,7 @@
       <div class="object-layer object-layer--work" data-layer="work" aria-hidden="true"></div>
       <div class="object-layer object-layer--lizzy" data-layer="lizzy" aria-hidden="true"></div>
 
-      <a class="object-hit object-hit--reading" data-object="reading" href="reading.html" aria-label="Open Reading">
+      <a class="object-hit object-hit--reading" data-object="reading" href="reading/" aria-label="Open Reading">
         <span class="hotspot hotspot--left">
           <span class="hotspot-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M4 5.5c2.6-.8 5.3-.3 8 1.4v12c-2.7-1.7-5.4-2.2-8-1.4zM20 5.5c-2.6-.8-5.3-.3-8 1.4v12c2.7-1.7 5.4-2.2 8-1.4z"/></svg>
@@ -31,7 +31,7 @@
         </span>
       </a>
 
-      <a class="object-hit object-hit--travel" data-object="travel" href="travel.html" aria-label="Open Travel">
+      <a class="object-hit object-hit--travel" data-object="travel" href="travel/" aria-label="Open Travel">
         <span class="hotspot hotspot--left">
           <span class="hotspot-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="m3 11 18-7-7 18-3-7-8-4Zm8 4 3-3"/></svg>
@@ -41,7 +41,7 @@
         </span>
       </a>
 
-      <a class="object-hit object-hit--work" data-object="work" href="work.html" aria-label="Open Work and Portfolio">
+      <a class="object-hit object-hit--work" data-object="work" href="work/" aria-label="Open Work and Portfolio">
         <span class="hotspot hotspot--center">
           <span class="hotspot-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2.5 19h19M9 16v3M15 16v3"/></svg>
@@ -51,7 +51,14 @@
         </span>
       </a>
 
-      <a class="object-hit object-hit--lizzy" data-object="lizzy" href="lizzy.html" aria-label="Open Lizzy, Life and Diary">
+      <a class="object-hit object-hit--lizzy" data-object="lizzy" href="lizzy/" aria-label="Open Lizzy, Life and Diary">
+        <figure class="lizzy-photo-holder" aria-hidden="true">
+          <div class="lizzy-photo-slot">
+            <!-- Replace this span with: <img src="your-photo.jpg" alt="Lizzy ..."> -->
+            <span>Photo<br>goes here</span>
+          </div>
+          <figcaption>Lizzy ♡</figcaption>
+        </figure>
         <span class="hotspot hotspot--right">
           <span class="hotspot-icon hotspot-icon--cat" aria-hidden="true">🐱</span>
           <span class="hotspot-label">Lizzy / Life / Diary</span>
@@ -62,11 +69,11 @@
       <div class="hint" aria-hidden="true">Hover an object to explore</div>
     </div>
 
-    <section class="intro" id="intro" aria-label="Introduction">
+    <section class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-title">
       <div class="intro-paper"></div>
       <div class="intro-copy">
         <p class="intro-kicker">Welcome in</p>
-        <h1>A More Curious Life</h1>
+        <h1 id="intro-title">A More Curious Life</h1>
         <p>Work, reading, travel, and small bright things.</p>
         <button id="enterButton" type="button">Enter <span aria-hidden="true">→</span></button>
       </div>

@@ -3,6 +3,12 @@
   const intro = document.getElementById('intro');
   const enterButton = document.getElementById('enterButton');
   const hits = document.querySelectorAll('[data-object]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Keep the README's direct-file option working while using clean routes on a server.
+  if (window.location.protocol === 'file:') {
+    hits.forEach((hit) => hit.setAttribute('href', `${hit.dataset.object}/index.html`));
+  }
 
   const activate = (name) => scene?.setAttribute('data-active', name);
   const clear = () => scene?.removeAttribute('data-active');
@@ -17,7 +23,26 @@
 
   const hideIntro = () => {
     intro?.classList.add('is-hidden');
+    intro?.setAttribute('aria-hidden', 'true');
+    intro?.removeAttribute('aria-modal');
+    if (scene) {
+      scene.removeAttribute('inert');
+      scene.removeAttribute('aria-hidden');
+    }
+    hits.forEach((hit) => hit.removeAttribute('tabindex'));
+    if (document.activeElement && intro?.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
     try { sessionStorage.setItem('amcl-intro-seen', '1'); } catch (_) {}
+  };
+
+  const showIntro = () => {
+    if (scene) {
+      scene.setAttribute('inert', '');
+      scene.setAttribute('aria-hidden', 'true');
+    }
+    hits.forEach((hit) => hit.setAttribute('tabindex', '-1'));
+    enterButton?.focus({ preventScroll: true });
   };
 
   enterButton?.addEventListener('click', hideIntro);
@@ -30,6 +55,9 @@
 
   let seen = false;
   try { seen = sessionStorage.getItem('amcl-intro-seen') === '1'; } catch (_) {}
-  if (seen) intro?.classList.add('is-hidden');
-  else window.setTimeout(hideIntro, 2100);
+  if (seen || reduceMotion) hideIntro();
+  else {
+    showIntro();
+    window.setTimeout(hideIntro, 1500);
+  }
 })();

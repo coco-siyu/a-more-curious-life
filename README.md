@@ -14,9 +14,12 @@ A zero-dependency browser prototype based on the agreed `spec.md`.
 - Hotspots expand into labels on hover/focus
 - Object-specific zoom/lift effect on hover
 - Short intro mask/reveal
-- Placeholder destination pages
+- Designed Work / Portfolio shell with three replaceable case-study spaces
+- Placeholder destination pages for Reading, Travel, and Lizzy
 - Keyboard focus support and reduced-motion support
 - Responsive scene positioning using percentages
+- Clean placeholder routes (`/work/`, `/lizzy/`, `/reading/`, `/travel/`)
+- Replaceable HTML/CSS Lizzy photo holder
 
 ## Run it
 
@@ -29,6 +32,14 @@ python3 -m http.server 8000
 ```
 
 Then open `http://localhost:8000`.
+
+## Replace Lizzy's photo
+
+The Polaroid over Lizzy is now live HTML/CSS rather than only being baked into the collage artwork. In `index.html`, replace the placeholder `<span>` inside `.lizzy-photo-slot` with an image:
+
+```html
+<img src="assets/lizzy.jpg" alt="Lizzy curled up on her blue blanket">
+```
 
 ## Notes
 
