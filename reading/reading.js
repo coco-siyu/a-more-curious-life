@@ -50,12 +50,6 @@
   const stage = document.querySelector('.reading-stage');
   const cards = [...document.querySelectorAll('.book-cover')];
   const detail = document.getElementById('bookDetail');
-  const backgroundRegions = [
-    document.querySelector('.reading-topbar'),
-    document.querySelector('.reading-intro'),
-    document.querySelector('.reading-books'),
-    document.querySelector('.reading-footer')
-  ].filter(Boolean);
   const dismiss = document.querySelector('.reading-dismiss');
   const closeButton = document.querySelector('.book-detail__close');
   const navButtons = [...document.querySelectorAll('[data-direction]')];
@@ -72,6 +66,7 @@
   };
   let activeIndex = -1;
   let opener = null;
+  let transitionToken = 0;
 
   const fillDetail = (book, index) => {
     fields.cover.src = book.cover;
@@ -94,53 +89,107 @@
     card.setAttribute('aria-expanded', String(selected));
   });
 
-  const openBook = (index, preserveOpener = false) => {
-    if (!preserveOpener) opener = document.activeElement;
-    activeIndex = (index + books.length) % books.length;
-    fillDetail(books[activeIndex], activeIndex);
-    selectCard(activeIndex);
-    if (!preserveOpener) stage?.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
-    stage?.classList.add('is-open');
-    detail?.setAttribute('aria-hidden', 'false');
-    dismiss?.setAttribute('tabindex', '0');
-    backgroundRegions.forEach((region) => region.setAttribute('inert', ''));
-    document.body.classList.add('reading-modal-open');
-    if (!preserveOpener) window.setTimeout(() => closeButton?.focus({ preventScroll: true }), reduceMotion ? 0 : 260);
+  const animateCover = (card, direction = 'in') => {
+    if (reduceMotion || !card || !fields.cover?.animate) return Promise.resolve();
+    const source = direction === 'in' ? card.getBoundingClientRect() : fields.cover.getBoundingClientRect();
+    const destination = direction === 'in' ? fields.cover.getBoundingClientRect() : card.getBoundingClientRect();
+    if (!source.width || !destination.width) return Promise.resolve();
+
+    const flight = document.createElement('img');
+    flight.className = 'book-flight';
+    flight.src = fields.cover.src;
+    flight.alt = '';
+    flight.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(flight);
+    fields.cover.classList.add('is-transitioning');
+
+    const rotation = getComputedStyle(card).getPropertyValue('--book-rotate').trim() || '0deg';
+    const animation = flight.animate([
+      {
+        left: `${source.left}px`, top: `${source.top}px`, width: `${source.width}px`, height: `${source.height}px`,
+        transform: direction === 'in' ? `rotate(${rotation})` : 'rotate(0deg)', opacity: .82
+      },
+      {
+        left: `${destination.left}px`, top: `${destination.top}px`, width: `${destination.width}px`, height: `${destination.height}px`,
+        transform: direction === 'in' ? 'rotate(0deg)' : `rotate(${rotation})`, opacity: 1
+      }
+    ], { duration: 430, easing: 'cubic-bezier(.22, .82, .2, 1)', fill: 'forwards' });
+
+    return animation.finished.catch(() => {}).finally(() => {
+      flight.remove();
+      fields.cover.classList.remove('is-transitioning');
+    });
   };
 
-  const closeBook = () => {
+  const openBook = (index, options = {}) => {
+    const { preserveOpener = false, keyboardActivation = false, animateFromCard = true } = options;
+    const nextIndex = (index + books.length) % books.length;
+    const wasOpen = activeIndex >= 0;
+    if (!preserveOpener) opener = cards[nextIndex];
+    const token = ++transitionToken;
+    activeIndex = nextIndex;
+    fillDetail(books[activeIndex], activeIndex);
+    selectCard(activeIndex);
+    stage?.classList.add('is-open');
+    detail?.setAttribute('aria-hidden', 'false');
+    dismiss?.setAttribute('tabindex', '-1');
+
+    if (!wasOpen && stage) {
+      const stageRect = stage.getBoundingClientRect();
+      const stageCenter = stageRect.top + stageRect.height / 2;
+      if (stageCenter < 170 || stageCenter > window.innerHeight - 170) {
+        stage.scrollIntoView({ block: 'center', behavior: 'auto' });
+      }
+    }
+
+    if (wasOpen && !animateFromCard) {
+      detail?.animate([
+        { opacity: .68, transform: 'translate(-50%, -50%) scale(.992)' },
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' }
+      ], { duration: 220, easing: 'ease-out' });
+    } else if (animateFromCard) {
+      requestAnimationFrame(() => {
+        if (token === transitionToken) animateCover(cards[activeIndex], 'in');
+      });
+    }
+
+    if (keyboardActivation) window.setTimeout(() => closeButton?.focus({ preventScroll: true }), reduceMotion ? 0 : 180);
+  };
+
+  const finishClose = () => {
     stage?.classList.remove('is-open');
     detail?.setAttribute('aria-hidden', 'true');
     dismiss?.setAttribute('tabindex', '-1');
-    backgroundRegions.forEach((region) => region.removeAttribute('inert'));
-    document.body.classList.remove('reading-modal-open');
     selectCard(-1);
     activeIndex = -1;
     if (opener instanceof HTMLElement) opener.focus({ preventScroll: true });
   };
 
-  cards.forEach((card, index) => card.addEventListener('click', () => openBook(index)));
+  const closeBook = () => {
+    if (activeIndex < 0) return;
+    const token = ++transitionToken;
+    const activeCard = cards[activeIndex];
+    animateCover(activeCard, 'out').then(() => {
+      if (token === transitionToken) finishClose();
+    });
+  };
+
+  cards.forEach((card, index) => card.addEventListener('click', (event) => {
+    if (activeIndex === index) {
+      closeBook();
+      return;
+    }
+    openBook(index, { keyboardActivation: event.detail === 0 });
+  }));
   dismiss?.addEventListener('click', closeBook);
   closeButton?.addEventListener('click', closeBook);
   navButtons.forEach((button) => button.addEventListener('click', () => {
-    openBook(activeIndex + (button.dataset.direction === 'next' ? 1 : -1), true);
+    openBook(activeIndex + (button.dataset.direction === 'next' ? 1 : -1), { preserveOpener: true, animateFromCard: false });
   }));
   window.addEventListener('keydown', (event) => {
     if (activeIndex < 0) return;
     if (event.key === 'Escape') closeBook();
-    if (event.key === 'ArrowRight') openBook(activeIndex + 1, true);
-    if (event.key === 'ArrowLeft') openBook(activeIndex - 1, true);
-    if (event.key === 'Tab') {
-      const focusable = [...detail.querySelectorAll('button, a[href]')].filter((element) => !element.hasAttribute('disabled'));
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last?.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first?.focus();
-      }
-    }
+    if (event.key === 'ArrowRight') openBook(activeIndex + 1, { preserveOpener: true, animateFromCard: false });
+    if (event.key === 'ArrowLeft') openBook(activeIndex - 1, { preserveOpener: true, animateFromCard: false });
   });
 })();
