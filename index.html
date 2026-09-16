@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4efe5" />
+  <title>A More Curious Life — Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="viewport" aria-label="A More Curious Life interactive landing page prototype">
+    <div class="scene" id="scene">
+      <img class="scene-image" src="assets/collage.png" alt="Editorial collage showing books, a laptop, Lizzy the calico cat, camera and travel map." />
+
+      <!-- Duplicate image layers are clipped to each object so only that object appears to lift/enlarge on hover. -->
+      <div class="object-layer object-layer--reading" data-layer="reading" aria-hidden="true"></div>
+      <div class="object-layer object-layer--travel" data-layer="travel" aria-hidden="true"></div>
+      <div class="object-layer object-layer--work" data-layer="work" aria-hidden="true"></div>
+      <div class="object-layer object-layer--lizzy" data-layer="lizzy" aria-hidden="true"></div>
+
+      <a class="object-hit object-hit--reading" data-object="reading" href="reading.html" aria-label="Open Reading">
+        <span class="hotspot hotspot--left">
+          <span class="hotspot-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 5.5c2.6-.8 5.3-.3 8 1.4v12c-2.7-1.7-5.4-2.2-8-1.4zM20 5.5c-2.6-.8-5.3-.3-8 1.4v12c2.7-1.7 5.4-2.2 8-1.4z"/></svg>
+          </span>
+          <span class="hotspot-label">Reading</span>
+          <span class="hotspot-arrow" aria-hidden="true">→</span>
+        </span>
+      </a>
+
+      <a class="object-hit object-hit--travel" data-object="travel" href="travel.html" aria-label="Open Travel">
+        <span class="hotspot hotspot--left">
+          <span class="hotspot-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m3 11 18-7-7 18-3-7-8-4Zm8 4 3-3"/></svg>
+          </span>
+          <span class="hotspot-label">Travel</span>
+          <span class="hotspot-arrow" aria-hidden="true">→</span>
+        </span>
+      </a>
+
+      <a class="object-hit object-hit--work" data-object="work" href="work.html" aria-label="Open Work and Portfolio">
+        <span class="hotspot hotspot--center">
+          <span class="hotspot-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2.5 19h19M9 16v3M15 16v3"/></svg>
+          </span>
+          <span class="hotspot-label">Work / Portfolio</span>
+          <span class="hotspot-arrow" aria-hidden="true">→</span>
+        </span>
+      </a>
+
+      <a class="object-hit object-hit--lizzy" data-object="lizzy" href="lizzy.html" aria-label="Open Lizzy, Life and Diary">
+        <span class="hotspot hotspot--right">
+          <span class="hotspot-icon hotspot-icon--cat" aria-hidden="true">🐱</span>
+          <span class="hotspot-label">Lizzy / Life / Diary</span>
+          <span class="hotspot-arrow" aria-hidden="true">→</span>
+        </span>
+      </a>
+
+      <div class="hint" aria-hidden="true">Hover an object to explore</div>
+    </div>
+
+    <section class="intro" id="intro" aria-label="Introduction">
+      <div class="intro-paper"></div>
+      <div class="intro-copy">
+        <p class="intro-kicker">Welcome in</p>
+        <h1>A More Curious Life</h1>
+        <p>Work, reading, travel, and small bright things.</p>
+        <button id="enterButton" type="button">Enter <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
