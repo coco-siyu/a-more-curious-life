@@ -3,18 +3,131 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#edf5f3" />
+  <meta name="description" content="A soft travel diary for unhurried days, changing light, and the details worth remembering." />
   <title>Travel — A More Curious Life</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;1,500;1,600&family=Nunito+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css" />
 </head>
-<body class="placeholder-page">
-  <main class="placeholder-card">
-    <div class="eyebrow">A More Curious Life · V0.1</div>
-    <h1>Travel</h1>
-    <p>This page is intentionally empty for the first prototype.</p>
-    <a href="../index.html">← Back to the landing page</a>
+<body class="travel-page">
+  <a class="skip-link" href="#travel-journal">Skip to travel stories</a>
+
+  <header class="travel-topbar">
+    <a class="travel-brand" href="../index.html" aria-label="A More Curious Life — home">A More Curious Life</a>
+    <nav class="travel-nav" aria-label="Portfolio sections">
+      <a href="../work/">Work</a>
+      <a href="../reading/">Reading</a>
+      <a aria-current="page" href="./">Travel</a>
+      <a href="../lizzy/">Life</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wander-hero" aria-labelledby="travel-title">
+      <svg class="wander-ribbon" viewBox="0 0 1200 650" aria-hidden="true">
+        <path d="M-40 500 C180 600 220 260 435 380 S715 600 790 320 1040 30 1240 190" />
+      </svg>
+
+      <div class="wander-hero__copy">
+        <p class="travel-kicker">Travel, slowly</p>
+        <h1 id="travel-title">Where the<br><em>light changes.</em></h1>
+        <p class="travel-deck">A place for salt-air mornings, long train windows, and the little moments that make a faraway place feel close.</p>
+        <a class="travel-open" href="#travel-journal">Wander through the stories <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <div class="wander-scene" aria-label="Placeholder for a favorite sunlit travel photograph" role="img">
+        <div class="wander-sun" aria-hidden="true"></div>
+        <span class="wander-cloud wander-cloud--one" aria-hidden="true"></span>
+        <span class="wander-cloud wander-cloud--two" aria-hidden="true"></span>
+        <div class="wander-hills" aria-hidden="true"><i></i><b></b></div>
+        <p>your favorite<br>wide-open view</p>
+      </div>
+
+      <figure class="wander-snapshot" aria-label="Placeholder for a candid travel photograph">
+        <div aria-hidden="true"><span></span><i></i></div>
+        <figcaption>a soft place to land</figcaption>
+      </figure>
+      <p class="wander-whisper" aria-hidden="true">no rush, just go</p>
+    </section>
+
+    <section class="travel-journal" id="travel-journal" aria-labelledby="journal-title">
+      <header class="travel-section-heading">
+        <p class="travel-kicker">Postcards to myself</p>
+        <h2 id="journal-title">Keep the feeling,<br><em>not the itinerary.</em></h2>
+        <p>Three open spaces for the trips you want to remember by atmosphere, not by checklist.</p>
+      </header>
+
+      <article class="memory memory--sea">
+        <figure class="memory-photo">
+          <div class="memory-art memory-art--sea" role="img" aria-label="Placeholder for a photograph near the sea">
+            <span class="memory-sun" aria-hidden="true"></span><i aria-hidden="true"></i><b aria-hidden="true"></b>
+          </div>
+          <figcaption>Replace with a morning you still think about</figcaption>
+        </figure>
+        <div class="memory-copy">
+          <p class="memory-date">Place · Season · Year</p>
+          <h3>Salt on our skin.</h3>
+          <p>Save the detail that returns first: warm stone under bare feet, the first swim, or breakfast that lasted until noon.</p>
+          <span class="memory-prompt">I want to remember...</span>
+        </div>
+      </article>
+
+      <article class="memory memory--city">
+        <figure class="memory-photo">
+          <div class="memory-art memory-art--city" role="img" aria-label="Placeholder for a photograph from a city wander">
+            <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span aria-hidden="true"></span>
+          </div>
+          <figcaption>Replace with a street you found by accident</figcaption>
+        </figure>
+        <div class="memory-copy">
+          <p class="memory-date">Place · Season · Year</p>
+          <h3>A city after rain.</h3>
+          <p>Keep the unplanned turn, the table by the window, and the song drifting out of somewhere you never found again.</p>
+          <span class="memory-prompt">The best surprise was...</span>
+        </div>
+      </article>
+
+      <article class="memory memory--hills">
+        <figure class="memory-photo">
+          <div class="memory-art memory-art--hills" role="img" aria-label="Placeholder for a quiet countryside photograph">
+            <span aria-hidden="true"></span><i aria-hidden="true"></i><b aria-hidden="true"></b>
+          </div>
+          <figcaption>Replace with somewhere time moved slowly</figcaption>
+        </figure>
+        <div class="memory-copy">
+          <p class="memory-date">Place · Season · Year</p>
+          <h3>No plans for tomorrow.</h3>
+          <p>Remember the day with nowhere to be—the long road, the open window, and how easy everything felt for a while.</p>
+          <span class="memory-prompt">I would go back for...</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="someday" aria-labelledby="someday-title">
+      <div class="someday__intro">
+        <p class="travel-kicker">For another season</p>
+        <h2 id="someday-title">The someday list</h2>
+        <p>Not a schedule. Just a few daydreams worth leaving space for.</p>
+      </div>
+      <ul>
+        <li><span>Somewhere for the sea</span><small>Add a place</small></li>
+        <li><span>Somewhere for the table</span><small>Add a place</small></li>
+        <li><span>Somewhere to disappear awhile</span><small>Add a place</small></li>
+      </ul>
+    </section>
+
+    <section class="travel-closing" aria-labelledby="travel-closing-title">
+      <p class="travel-kicker">Until the next window seat</p>
+      <h2 id="travel-closing-title">Leave room<br><em>for wonder.</em></h2>
+      <a href="../index.html">Back to the landing page <span aria-hidden="true">↗</span></a>
+    </section>
   </main>
+
+  <footer class="travel-footer">
+    <span>A More Curious Life</span>
+    <span>Made for wandering</span>
+  </footer>
 </body>
 </html>

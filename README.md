@@ -16,7 +16,8 @@ A zero-dependency browser prototype based on the agreed `spec.md`.
 - Short intro mask/reveal
 - Designed Work / Portfolio shell with three replaceable case-study spaces
 - Interactive Reading shelf with six selected books, expandable details, and keyboard navigation
-- Placeholder destination pages for Travel and Lizzy
+- Sun-washed Travel diary with loose postcard stories and replaceable trip-photo spaces
+- Placeholder destination page for Lizzy
 - Keyboard focus support and reduced-motion support
 - Responsive scene positioning using percentages
 - Clean placeholder routes (`/work/`, `/lizzy/`, `/reading/`, `/travel/`)
