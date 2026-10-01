@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f3eb" />
+  <meta name="description" content="An interactive personal travel atlas concept for A More Curious Life." />
+  <title>Travel Atlas Concept — A More Curious Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#atlas">Skip to the atlas</a>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="A More Curious Life — home">
+      <span>A More Curious Life</span>
+      <small>Travel study · 02</small>
+    </a>
+    <nav aria-label="Concept navigation">
+      <a href="#atlas">Atlas</a>
+      <a href="#stories">Field notes</a>
+      <a href="#route">Route</a>
+      <a class="back-link" href="../travel/">Live travel page ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="atlas-hero" id="atlas" aria-labelledby="page-title">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">A personal atlas · 2014—now</p>
+        <h1 id="page-title">Places I’ve<br><em>wandered.</em></h1>
+        <p class="hero-deck">Collected by memory, not mileage: night trains, long lunches, wrong turns, and the light in places I still think about.</p>
+        <a class="text-link" href="#stories">Open the field notes <span aria-hidden="true">↓</span></a>
+
+        <dl class="travel-totals" aria-label="Travel totals">
+          <div><dt>32</dt><dd>countries</dd></div>
+          <div><dt>68</dt><dd>cities</dd></div>
+          <div><dt>1,200+</dt><dd>photographs</dd></div>
+        </dl>
+      </div>
+
+      <div class="map-panel" data-reveal>
+        <div class="map-index" aria-hidden="true"><span>40° N</span><span>MAP / 001</span><span>20° S</span></div>
+        <p class="map-hint"><span aria-hidden="true">↳</span> Choose a pin</p>
+
+        <svg class="world-map" viewBox="0 0 900 560" aria-hidden="true">
+          <defs>
+            <filter id="paper-soften" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="0.35" />
+            </filter>
+          </defs>
+          <g class="latitudes">
+            <path d="M32 155h836M32 280h836M32 405h836" />
+            <path d="M174 35v490M450 35v490M726 35v490" />
+          </g>
+          <g class="land" filter="url(#paper-soften)">
+            <path d="M80 116 132 74l89-21 73 17 31 31 47 9 25 36-38 40-44 7-18 44-54 18-39-21-24 17-53-37-45-12-24-36Z"/>
+            <path d="m245 274 47 27 24 59-9 58-37 86-24-20-5-65-25-48 7-57Z"/>
+            <path d="m436 130 41-24 64 4 18-22 88 2 44 29 83 6 77 54-24 42-71 11-26 37-49-8-22-52-54-3-29 46-43 15-14 58-34 70-39-19-17-81-27-34 22-48-28-28Z"/>
+            <path d="m605 351 40 11 39 56-9 74-46 24-54-38 8-76Z"/>
+            <path d="m757 398 52-16 50 31-17 47-67 5-34-34Z"/>
+            <path d="m423 72 26-28 41 7 12 35-39 13Z"/>
+          </g>
+          <path class="route-line" d="M183 180 C250 250 315 239 388 207 S520 157 565 187 S690 312 793 418" pathLength="1"/>
+          <path class="route-line route-line--south" d="M388 207 C340 321 287 374 267 438" pathLength="1"/>
+          <g class="plane" transform="translate(338 222) rotate(-14)">
+            <path d="m0 9 12-2L23 0l4 1-5 8 12 4-1 3-13-2-5 8-3-1 2-9-12 1Z"/>
+          </g>
+        </svg>
+
+        <button class="map-pin map-pin--new-york" type="button" data-trip="new-york" aria-label="Show New York field note"><span></span><b>New York</b></button>
+        <button class="map-pin map-pin--italy is-active" type="button" data-trip="italy" aria-label="Show Italy field note" aria-pressed="true"><span></span><b>Italy</b></button>
+        <button class="map-pin map-pin--yellowstone" type="button" data-trip="yellowstone" aria-label="Show Yellowstone field note"><span></span><b>Yellowstone</b></button>
+        <button class="map-pin map-pin--bali" type="button" data-trip="bali" aria-label="Show future Bali field note"><span></span><b>Bali</b></button>
+
+        <article class="map-card" id="map-card" aria-live="polite">
+          <div class="map-card__photo photo--italy" data-card-photo role="img" aria-label="Lake Como, Italy"></div>
+          <div class="map-card__body">
+            <p data-card-season>Winter 2025/26</p>
+            <h2 data-card-title>Italy, slowly</h2>
+            <p data-card-place>Rome · Florence · Venice · Dolomites · Milan</p>
+            <a href="#italy-note">Read the field note <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="story-index" id="stories" aria-labelledby="stories-title">
+      <header class="section-heading" data-reveal>
+        <div>
+          <p class="eyebrow">Recent field notes</p>
+          <h2 id="stories-title">Three ways<br><em>of being elsewhere.</em></h2>
+        </div>
+        <p>Not guides, exactly. More like the fragments that survive after the itinerary is gone.</p>
+      </header>
+
+      <div class="story-grid">
+        <article class="story-card story-card--feature" id="italy-note" data-reveal>
+          <div class="story-photo photo--italy" role="img" aria-label="A lakeside town in Lake Como, Italy"><span>01 / 03</span></div>
+          <div class="story-copy">
+            <p class="story-meta">Italy · Winter 2025/26 · 12 days</p>
+            <h3>Italy, slowly</h3>
+            <p>Five cities, two trains missed, and one very good plate of cacio e pepe. A winter route through mountains, water, and rooms full of old light.</p>
+            <a href="#route">Follow the route <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="story-card" data-reveal>
+          <div class="story-photo photo--yellowstone" role="img" aria-label="A steaming geothermal basin in Yellowstone"><span>02 / 03</span></div>
+          <div class="story-copy">
+            <p class="story-meta">Yellowstone · Summer 2024 · 5 days</p>
+            <h3>When the earth breathes</h3>
+            <p>Cold mornings, lodgepole pines, and the low hiss of a landscape that never quite sits still.</p>
+            <button type="button" data-note="Yellowstone">Open the note <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="story-card" data-reveal>
+          <div class="story-photo photo--new-york" role="img" aria-label="A New York street after rain"><span>03 / 03</span></div>
+          <div class="story-copy">
+            <p class="story-meta">New York · Autumn 2024 · 4 days</p>
+            <h3>The city after rain</h3>
+            <p>Bookshops until closing, wet pavement, and one blue-hour walk with nowhere left to be.</p>
+            <button type="button" data-note="New York">Open the note <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="route-notes" id="route" aria-labelledby="route-title">
+      <div class="route-title" data-reveal>
+        <p class="eyebrow">One route, five stops</p>
+        <h2 id="route-title">A winter line<br><em>through Italy.</em></h2>
+        <p>Move through the stops to retrace the trip.</p>
+      </div>
+
+      <ol class="route-list" data-reveal>
+        <li class="is-active" data-stop="Rome"><button type="button"><span>01</span><b>Rome<small>Old stones, late dinners</small></b><em>2 days</em></button></li>
+        <li data-stop="Florence"><button type="button"><span>02</span><b>Florence<small>Art, markets, morning fog</small></b><em>2 days</em></button></li>
+        <li data-stop="Venice"><button type="button"><span>03</span><b>Venice<small>Quiet canals before nine</small></b><em>2 days</em></button></li>
+        <li data-stop="Dolomites"><button type="button"><span>04</span><b>Dolomites<small>Snow roads, warm kitchens</small></b><em>3 days</em></button></li>
+        <li data-stop="Milan"><button type="button"><span>05</span><b>Milan<small>A final coffee standing up</small></b><em>2 days</em></button></li>
+      </ol>
+
+      <figure class="route-photo" data-reveal>
+        <div class="photo--italy" role="img" aria-label="Lake Como at late afternoon"></div>
+        <figcaption><span data-stop-caption>Rome · 41.90° N, 12.49° E</span><small>Frame 001</small></figcaption>
+        <svg viewBox="0 0 280 360" aria-hidden="true">
+          <path d="M51 39C99 77 101 121 145 147s71 62 81 157" />
+          <circle cx="51" cy="39" r="5"/><circle cx="100" cy="104" r="5"/><circle cx="145" cy="147" r="5"/><circle cx="196" cy="217" r="5"/><circle cx="226" cy="304" r="5"/>
+        </svg>
+      </figure>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="closing-orbit" aria-hidden="true"><span></span><i></i></div>
+      <p class="eyebrow">The next pin is still blank</p>
+      <h2 id="closing-title">Leave room<br><em>for the detour.</em></h2>
+      <a class="text-link" href="../index.html">Return to the desk <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <span>A More Curious Life</span>
+    <span>Concept 02 · Personal atlas</span>
+    <span>Maps, margins, and memory</span>
+  </footer>
+
+  <dialog class="note-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Close field note">×</button>
+    <p class="eyebrow">Field note preview</p>
+    <h2 id="dialog-title">Yellowstone</h2>
+    <p>This interaction is ready for the full story. For now, the note stays folded inside the atlas.</p>
+    <button class="dialog-done" type="button">Fold the note</button>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
