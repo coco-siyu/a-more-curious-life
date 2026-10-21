@@ -3,58 +3,114 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Six books from Coco's reading shelf, opened as an interactive collection." />
+  <meta name="theme-color" content="#241814" />
+  <meta name="description" content="A cozy reading shelf and parchment journal: notes, favourite quotes, and authors." />
   <title>Reading — A More Curious Life</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
   <script src="reading.js" defer></script>
 </head>
-<body class="reading-page">
-  <a class="skip-link" href="#readingShelf">Skip to the books</a>
-  <header class="reading-topbar">
-    <a class="reading-home" href="../index.html" aria-label="Back to A More Curious Life"><span aria-hidden="true">←</span><span>A More Curious Life</span></a>
-    <span class="reading-count">Selected reading · 06</span>
+<body class="library-page">
+  <a class="skip-link" href="#bookShelf">Skip to the books</a>
+  <div class="library-vignette" aria-hidden="true"></div>
+
+  <header class="library-header">
+    <a class="library-brand" href="../index.html" aria-label="A More Curious Life — home">
+      <span>A More Curious Life</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5C15 4 8.5 7 5.5 13.5M4 20c2.5-6 7-10 14.5-13.5M8 16l-4 .5m8-5-1-4"/></svg>
+    </a>
+    <nav aria-label="Portfolio sections">
+      <a href="../index.html">Home</a>
+      <a href="../work/">Work</a>
+      <a aria-current="page" href="./">Reading</a>
+      <a href="../travel/">Travel</a>
+      <a href="../lizzy/">Lizzy</a>
+    </nav>
+    <button class="search-toggle" type="button" aria-label="Search books" aria-expanded="false" aria-controls="bookSearch">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+    </button>
   </header>
+
   <main>
-    <section class="reading-intro" aria-labelledby="readingTitle">
-      <h1 id="readingTitle">A few books I keep thinking about</h1>
-      <p class="reading-deck">Choose a cover to look closer.</p>
-    </section>
-    <section class="reading-stage" id="readingShelf" aria-label="Six selected books">
-      <div class="reading-stage__grain" aria-hidden="true"></div>
-      <p class="reading-stage__credit" aria-hidden="true">Personal shelf · 2025–26</p>
-      <div class="reading-books">
-        <button class="book-cover book-cover--answer" type="button" data-book="answer" aria-controls="bookDetail" aria-expanded="false"><img src="../assets/books/the-answer-is-no.jpg" alt="The Answer Is No by Fredrik Backman book cover" /><span>Open The Answer Is No</span></button>
-        <button class="book-cover book-cover--hyunam" type="button" data-book="hyunam" aria-controls="bookDetail" aria-expanded="false"><img src="../assets/books/welcome-to-hyunam-dong.jpg" alt="Welcome to the Hyunam-Dong Bookshop by Hwang Bo-Reum book cover" /><span>Open Welcome to the Hyunam-Dong Bookshop</span></button>
-        <button class="book-cover book-cover--emily" type="button" data-book="emily" aria-controls="bookDetail" aria-expanded="false"><img src="../assets/books/emily-wildes-compendium.jpg" alt="Emily Wilde's Compendium of Lost Tales by Heather Fawcett book cover" /><span>Open Emily Wilde's Compendium of Lost Tales</span></button>
-        <button class="book-cover book-cover--correspondent" type="button" data-book="correspondent" aria-controls="bookDetail" aria-expanded="false"><img src="../assets/books/the-correspondent.jpg" alt="The Correspondent by Virginia Evans book cover" /><span>Open The Correspondent</span></button>
-        <button class="book-cover book-cover--anxious" type="button" data-book="anxious" aria-controls="bookDetail" aria-expanded="false"><img src="../assets/books/anxious-people.jpg" alt="Anxious People by Fredrik Backman book cover" /><span>Open Anxious People</span></button>
-        <button class="book-cover book-cover--therapy" type="button" data-book="therapy" aria-controls="bookDetail" aria-expanded="false"><img src="../assets/books/maybe-you-should-talk-to-someone.jpg" alt="Maybe You Should Talk to Someone by Lori Gottlieb book cover" /><span>Open Maybe You Should Talk to Someone</span></button>
+    <section class="reading-hero" aria-labelledby="readingTitle">
+      <div>
+        <p class="library-kicker">Coco’s reading journal</p>
+        <h1 id="readingTitle">Reading</h1>
+        <p>Different worlds. Kinder people.<br>A steadier, more curious me.</p>
       </div>
-      <div class="reading-stage__chrome" aria-hidden="true"><span class="reading-stage__pulse"></span><span>Click a cover to open</span><span>Six books · personal archive</span></div>
-      <button class="reading-dismiss" type="button" aria-label="Close book details" tabindex="-1"></button>
-      <article class="book-detail" id="bookDetail" role="region" aria-hidden="true" aria-labelledby="detailTitle" aria-live="polite">
-        <button class="book-detail__close" type="button" aria-label="Close book details">×</button>
-        <figure class="book-detail__visual"><img id="detailCover" src="" alt="" /></figure>
-        <div class="book-detail__copy">
-          <p class="book-detail__eyebrow" id="detailEyebrow"></p>
-          <h2 id="detailTitle"></h2>
-          <p class="book-detail__author" id="detailAuthor"></p>
-          <dl class="book-detail__metadata">
-            <div><dt>Published</dt><dd id="detailYear"></dd></div><div><dt>Publisher</dt><dd id="detailPublisher"></dd></div>
-            <div><dt>Format</dt><dd id="detailFormat"></dd></div><div><dt>Language</dt><dd id="detailLanguage"></dd></div>
-            <div><dt>My rating</dt><dd id="detailRating"></dd></div><div id="detailDateRow"><dt>Read</dt><dd id="detailDate"></dd></div>
-          </dl>
-          <p class="book-detail__description" id="detailDescription"></p>
-          <blockquote class="book-detail__note" id="detailNote" hidden></blockquote>
-          <a class="book-detail__link" id="detailLink" href="#" target="_blank" rel="noreferrer">View on Goodreads <span aria-hidden="true">↗</span></a>
-        </div>
-        <nav class="book-detail__nav" aria-label="Browse selected books"><button type="button" data-direction="previous" aria-label="Previous book">←</button><span id="detailPosition">01 / 06</span><button type="button" data-direction="next" aria-label="Next book">→</button></nav>
+      <label class="book-search" for="bookSearch" hidden>
+        <span>Find a title or author</span>
+        <input id="bookSearch" type="search" autocomplete="off" placeholder="Search the shelf…" />
+      </label>
+    </section>
+
+    <section class="shelf-section" aria-label="Reading shelf">
+      <div class="shelf-toolbar">
+        <div class="filter-row" id="primaryFilters" aria-label="Filter books"></div>
+        <button class="shuffle-button" type="button" id="shuffleBook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c4.5 0 5 10 10 10h3M17 4l3 3-3 3M4 17h3c1.8 0 3-1.2 4-3M16 7c.5 0 .8 0 1 .1M17 14l3 3-3 3"/></svg>
+          <span>Pick a book for me</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <div class="more-menu" id="moreFilters" hidden></div>
+
+      <div class="bookcase" id="bookShelf">
+        <div class="book-row" id="bookRow" aria-live="polite"></div>
+        <p class="empty-shelf" id="emptyShelf" hidden>No books here yet…</p>
+        <div class="wood-plank" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="journal-layout" id="journal" aria-label="Open reading journal">
+      <article class="journal-book" id="journalBook">
+        <section class="journal-page journal-page--summary" aria-labelledby="journalTitle">
+          <div class="large-cover" id="largeCover" aria-hidden="true"></div>
+          <div class="book-summary">
+            <h2 id="journalTitle"></h2>
+            <p class="summary-author" id="summaryAuthor"></p>
+            <div class="rating-line" aria-label="Book rating"><span class="stars" id="summaryStars"></span><span id="summaryRating"></span></div>
+            <ul class="book-tags" id="summaryTags" aria-label="Book tags"></ul>
+            <p class="book-blurb" id="summaryBlurb"></p>
+            <blockquote id="summaryQuote"></blockquote>
+            <div class="status-picker">
+              <button type="button" id="statusButton" aria-haspopup="menu" aria-expanded="false">
+                <span aria-hidden="true">♧</span><span id="statusLabel">Want to read</span><span aria-hidden="true">⌄</span>
+              </button>
+              <div class="status-menu" id="statusMenu" role="menu" hidden></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="journal-page journal-page--notes">
+          <div class="journal-tabs" role="tablist" aria-label="Book journal sections">
+            <button type="button" role="tab" id="tab-notes" aria-controls="journalPanel" aria-selected="true" data-tab="notes">My notes</button>
+            <button type="button" role="tab" id="tab-quotes" aria-controls="journalPanel" aria-selected="false" data-tab="quotes">Favourite quotes</button>
+            <button type="button" role="tab" id="tab-author" aria-controls="journalPanel" aria-selected="false" data-tab="author">About the author</button>
+          </div>
+          <div class="journal-writing" id="journalPanel" role="tabpanel" tabindex="0" aria-labelledby="tab-notes"></div>
+        </section>
       </article>
+
+      <aside class="journal-index">
+        <h2><span aria-hidden="true">✎</span> My reading journal</h2>
+        <dl>
+          <div><dt>2025</dt><dd>9 books</dd></div>
+          <div><dt>2024</dt><dd>31 books</dd></div>
+          <div><dt>2023</dt><dd>24 books</dd></div>
+          <div><dt>2022</dt><dd>18 books</dd></div>
+        </dl>
+        <p>Read. Reflect.<br>Be a little kinder.</p>
+      </aside>
     </section>
   </main>
-  <footer class="reading-footer"><span>Reading notes · 2026</span><a href="../index.html">Return to the table</a></footer>
+
+  <footer class="library-footer">
+    <span>A More Curious Life · Reading</span>
+    <a href="../index.html">Return home</a>
+  </footer>
 </body>
 </html>
