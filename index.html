@@ -4,11 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f4efe5" />
-  <title>A More Curious Life — Prototype</title>
+  <title>A More Curious Life — Coco</title>
+  <meta name="description" content="An interactive scrapbook of work, stories, books, travels, and the small joys of life." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="interactive.css" />
 </head>
 <body>
   <main class="viewport" aria-label="A More Curious Life interactive landing page prototype">
@@ -52,13 +54,6 @@
       </a>
 
       <a class="object-hit object-hit--lizzy" data-object="lizzy" href="lizzy/" aria-label="Open Lizzy, Life and Diary">
-        <figure class="lizzy-photo-holder" aria-hidden="true">
-          <div class="lizzy-photo-slot">
-            <!-- Replace this span with: <img src="your-photo.jpg" alt="Lizzy ..."> -->
-            <span>Photo<br>goes here</span>
-          </div>
-          <figcaption>Lizzy ♡</figcaption>
-        </figure>
         <span class="hotspot hotspot--right">
           <span class="hotspot-icon hotspot-icon--cat" aria-hidden="true">🐱</span>
           <span class="hotspot-label">Lizzy / Life / Diary</span>
@@ -66,18 +61,29 @@
         </span>
       </a>
 
-      <div class="hint" aria-hidden="true">Hover an object to explore</div>
-    </div>
-
-    <section class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-title">
-      <div class="intro-paper"></div>
-      <div class="intro-copy">
-        <p class="intro-kicker">Welcome in</p>
-        <h1 id="intro-title">A More Curious Life</h1>
-        <p>Work, reading, travel, and small bright things.</p>
-        <button id="enterButton" type="button">Enter <span aria-hidden="true">→</span></button>
+      <div class="chapter-peek" id="chapterPeek" aria-hidden="true">
+        <button type="button" class="peek-close" id="peekClose" aria-label="Close chapter preview">×</button>
+        <span id="peekIndex">01 / FOUR LITTLE WORLDS</span>
+        <strong id="peekTitle">Find a little wonder.</strong>
+        <p id="peekText">Explore the objects that tell my story.</p>
+        <a id="peekLink" href="work/">Open chapter ↗</a>
       </div>
-    </section>
+      <div class="hint" aria-hidden="true">Move over an object · click to discover</div>
+    </div>
+    <nav class="chapter-dock" aria-label="Explore the chapters">
+      <span class="dock-heading">EXPLORE</span>
+      <a href="work/" data-chapter="work"><span>⌘</span> Work</a>
+      <a href="reading/" data-chapter="reading"><span>▤</span> Reading</a>
+      <a href="travel/" data-chapter="travel"><span>↗</span> Travel</a>
+      <a href="lizzy/" data-chapter="lizzy"><span>♡</span> Lizzy</a>
+      <button type="button" id="guideButton" aria-label="Show site welcome again" title="About this little world">?</button>
+    </nav>
+    <div class="welcome-toast" id="welcomeToast" role="status">
+      <span class="toast-kicker">A PERSONAL SCRAPBOOK</span>
+      <strong>Welcome to a more curious life.</strong>
+      <p>Pick an object, or use the chapters below.</p>
+      <button type="button" id="closeWelcome">Start exploring ↗</button>
+    </div>
   </main>
   <script src="app.js"></script>
 </body>
