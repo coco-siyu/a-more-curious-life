@@ -23,7 +23,7 @@ button, a { color: inherit; }
 button { cursor: pointer; }
 a { text-underline-offset: 4px; }
 
-.library-page::before { content: ''; position: fixed; z-index: -3; inset: 0; background: url('library-bg.jpg') center / cover no-repeat; }
+.library-page::before { content: ''; position: fixed; z-index: -3; inset: 0; background: url('../assets/books/library-bg.jpg') center / cover no-repeat; }
 .library-vignette { position: fixed; z-index: -2; inset: 0; background: radial-gradient(ellipse at center, oklch(0.15 0.02 50 / .35), oklch(0.1 0.02 40 / .87)); pointer-events: none; }
 .skip-link { position: fixed; z-index: 100; top: 12px; left: 12px; padding: 10px 13px; background: var(--parchment); color: var(--ink); transform: translateY(-160%); }
 .skip-link:focus { transform: none; }
