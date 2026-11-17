@@ -12,6 +12,9 @@
 frontend/node_modules/
 frontend/dist/
 frontend/coverage/
+work-gallery/node_modules/
+work-gallery/.vite/
+work-gallery/*.tsbuildinfo
 
 # Backend
 backend/.venv/

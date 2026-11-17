@@ -1,6 +1,7 @@
-# A More Curious Life — V0.1 Interactive Prototype
+# A More Curious Life — Interactive Prototype
 
-A zero-dependency browser prototype based on the agreed `spec.md`.
+A static multi-page browser prototype based on the agreed `spec.md`, with a
+self-contained React and Three.js gallery for the Work chapter.
 
 ## What is implemented
 
@@ -14,7 +15,7 @@ A zero-dependency browser prototype based on the agreed `spec.md`.
 - Hotspots expand into labels on hover/focus
 - Object-specific zoom/lift effect on hover
 - Short intro mask/reveal
-- Designed Work / Portfolio shell with three replaceable case-study spaces
+- Immersive Work / Portfolio gallery with six navigable 3D exhibits
 - Interactive Reading shelf with six selected books, expandable details, and keyboard navigation
 - Sun-washed Travel diary with loose postcard stories and replaceable trip-photo spaces
 - Placeholder destination page for Lizzy
@@ -25,7 +26,8 @@ A zero-dependency browser prototype based on the agreed `spec.md`.
 
 ## Run it
 
-The simplest option is to open `index.html` directly in a browser.
+The simplest option is to open `index.html` directly in a browser. The compiled
+Work gallery also supports this local-file workflow.
 
 For a local server (recommended):
 
@@ -34,6 +36,23 @@ python3 -m http.server 8000
 ```
 
 Then open `http://localhost:8000`.
+
+## Develop the Work gallery
+
+The gallery source lives in `work-gallery/`. Its production build is written to
+`work/` so the rest of the site can continue to be served as plain static files.
+
+```bash
+cd work-gallery
+npm install
+npm run dev
+```
+
+After changing the gallery, rebuild the version used by the full site:
+
+```bash
+npm run build
+```
 
 ## Replace Lizzy's photo
 

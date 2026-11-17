@@ -13,7 +13,7 @@
   const touchMode = matchMedia('(hover: none), (pointer: coarse)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const chapters = {
-    work: { num: '01 / IDEAS IN PRACTICE', title: 'Things I make', text: 'Data, design and projects with purpose.', url: 'work/' },
+    work: { num: '01 / IDEAS IN PRACTICE', title: 'Things I make', text: 'Data, design and projects with purpose.', url: 'work/index.html' },
     reading: { num: '02 / THE BOOKSHELF', title: 'Between the pages', text: 'Books that have stayed with me.', url: 'reading/' },
     travel: { num: '03 / FAR & NEAR', title: 'Somewhere new', text: 'Travel notes, places and little discoveries.', url: 'travel/' },
     lizzy: { num: '04 / THE EVERYDAY', title: 'Life with Lizzy', text: 'A little cat, ordinary wonders and small joys.', url: 'lizzy/' }
