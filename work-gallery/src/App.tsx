@@ -54,7 +54,7 @@ export default function App() {
             Coco Chen
           </a>
           <p className="mt-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            Permanent Collection · Works 2023–2026
+            Current Projects + Concept Archive · 2023–Present
           </p>
           <a
             className="pointer-events-auto mt-3 inline-block text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-foreground"
@@ -167,6 +167,8 @@ export default function App() {
             <a
               key={link.label}
               href={link.href}
+              target="_blank"
+              rel="noreferrer"
               className="bg-plaque-foreground px-3 py-2 text-xs uppercase tracking-widest text-plaque hover:bg-primary"
             >
               {link.label} ↗
